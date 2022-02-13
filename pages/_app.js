@@ -12,6 +12,7 @@ import '../public/css/style.css';
 import store from '../redux/store';
 
 function MyApp({ Component, pageProps }) {
+  console.log("######"+process.env.NEXT_PUBLIC_APP_ID)
   return (
     <>
       {/* <Head>
@@ -20,14 +21,16 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head> */}
-      <Provider store={store}>
         <MoralisProvider
           appId={process.env.NEXT_PUBLIC_APP_ID}
           serverUrl={process.env.NEXT_PUBLIC_SERVER_URL}
         >
+      <Provider store={store}>
+   
           <Component {...pageProps} />
+          </Provider>
         </MoralisProvider>
-      </Provider>
+     
     </>
   )
 }

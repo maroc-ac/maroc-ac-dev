@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useMoralis } from "react-moralis";
@@ -24,7 +23,7 @@ const Index = () => {
 
     return (
         <>
-            <a>{isAuthenticated?'wino not conected':'conectted = '+user}</a>
+          
             <LayoutFront pageClass={"front"}>
                 <div className="intro1 section-padding">
                     <div className="container">
@@ -287,11 +286,15 @@ const Index = () => {
                         <div className="row justify-content-center">
                             <div className="col-xl-8">
                                 <div className="section-title text-center">
-                                    <h2>Meet with Neftify</h2>
+                                    <h2>Meet with wino</h2>
                                     <p>
                                         The NFT marketplace with everything for
                                         everyone
                                     </p>
+                                    <a onClick={connectMetamask}>
+                                           click wino conect to connectMetamask
+                                        </a>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -325,6 +328,7 @@ const Index = () => {
                     onClose={() => setOpen(false)}
                 />
             </LayoutFront>
+            <a>{isAuthenticated?'wino conected='+JSON.stringify( user):'wino not conectted = '}</a>
         </>
     );
 };
