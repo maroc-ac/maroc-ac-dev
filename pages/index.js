@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import { useMoralis } from "react-moralis";
+
+import "react-modal-video/css/modal-video.css";
+
 import BrowseCategory from "../components/elements/BrowseCategory";
 import TopCollection from "../components/elements/TopCollection";
 import LayoutFront from "../components/layout/LayoutFront";
-import "react-modal-video/css/modal-video.css";
-import dynamic from "next/dynamic";
-
-import Link from "next/link";
 import IntroSlider from "../components/slider/IntroSlider";
 import NotableDrops from "../components/slider/NotableDrops";
 import TrendingSlider from "../components/slider/Trending";
@@ -16,8 +19,12 @@ const ModalVideo = dynamic(import("react-modal-video"), {
 
 const Index = () => {
     const [isOpen, setOpen] = useState(false);
+    const { authenticate,isAuthenticated, logout, user } = useMoralis();
+    const connectMetamask = () => authenticate();
+
     return (
         <>
+            <a>{isAuthenticated?'wino not conected':'conectted = '+user}</a>
             <LayoutFront pageClass={"front"}>
                 <div className="intro1 section-padding">
                     <div className="container">
@@ -133,7 +140,7 @@ const Index = () => {
                         <div className="row">
                             <div className="col-12">
                                 <div className="trending-slider">
-                                <TrendingSlider/>
+                                    <TrendingSlider />
 
                                 </div>
                             </div>
@@ -217,10 +224,15 @@ const Index = () => {
                                         </p>
                                         <Link href="/explore">
                                             <a>
-                                                Explore
+                                                Explore wiino
                                                 <i className="bi bi-arrow-right-short"></i>
                                             </a>
                                         </Link>
+                                        <div className="play-btn">
+                                            <a onClick={() => connectMetamask()}>
+                                                Conectinoooo
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
